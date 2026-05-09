@@ -222,13 +222,13 @@ In `App.tsx` footer and `Contact.tsx`:
 
 Your portfolio includes **automated CI/CD** with GitHub Actions! 🎉
 
-**Live Site:** 🌐 [https://shababtoha.github.io/portfolio/](https://shababtoha.github.io/portfolio/)
+**Setup:**
+1. Push your code to GitHub
+2. Go to **Settings** → **Pages**
+3. Under "Build and deployment", select Source: **GitHub Actions**
+4. Every push to `main` will auto-deploy!
 
-**Setup Complete:**
-- ✅ Pushed to GitHub: `https://github.com/shababtoha/portfolio.git`
-- ✅ GitHub Actions configured for auto-deployment
-- ✅ Every push to `main` automatically builds and deploys
-- ✅ Site configured with proper base path for GitHub Pages
+Your site will be live at: `https://yourusername.github.io/repository-name`
 
 **Features:**
 - ✅ Automatic deployment on every push to main
