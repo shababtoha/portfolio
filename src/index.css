@@ -13,6 +13,15 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  /* High-quality image rendering */
+  img {
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
 }
 
 @layer utilities {

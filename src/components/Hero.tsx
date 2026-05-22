@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, BarChart3, Sparkles } from 'lucide-react';
+import { ArrowDown, Code2, Sparkles } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -32,9 +32,9 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center justify-center gap-3 mb-8"
           >
-            <BarChart3 className="text-primary" size={28} />
+            <Code2 className="text-primary" size={28} />
             <h2 className="text-2xl md:text-4xl text-gray-300 font-light">
-              Analytics Platform Engineer
+              Senior Software Engineer
             </h2>
           </motion.div>
 

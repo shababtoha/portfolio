@@ -20,32 +20,37 @@ function App() {
 
       <div className="relative z-10">
         <Navigation />
-        <Hero />
-        <About />
-        <Experience />
-        <Leadership />
-        <CompetitiveProgramming />
-        <Skills />
-        <Projects />
-        <Contact />
+        <main role="main">
+          <Hero />
+          <About />
+          <Experience />
+          <Leadership />
+          <CompetitiveProgramming />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
 
-        <footer className="border-t border-white/10 py-8">
+        <footer className="border-t border-white/10 py-8" role="contentinfo">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-gray-400 text-sm">
                 © 2026 Shabab Hasnat Toha. All rights reserved.
               </p>
-              <div className="flex gap-6">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-primary transition-colors">
+              <div className="flex gap-6" role="navigation" aria-label="Social media links">
+                <a href="https://github.com/shababtoha" target="_blank" rel="noopener noreferrer"
+                   className="text-gray-400 hover:text-primary transition-colors"
+                   aria-label="Visit Shabab's GitHub profile">
                   <Github size={20} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-primary transition-colors">
+                <a href="https://linkedin.com/in/shababtoha" target="_blank" rel="noopener noreferrer"
+                   className="text-gray-400 hover:text-primary transition-colors"
+                   aria-label="Visit Shabab's LinkedIn profile">
                   <Linkedin size={20} />
                 </a>
                 <a href="mailto:shabab.toha@gmail.com"
-                   className="text-gray-400 hover:text-primary transition-colors">
+                   className="text-gray-400 hover:text-primary transition-colors"
+                   aria-label="Send email to Shabab">
                   <Mail size={20} />
                 </a>
               </div>

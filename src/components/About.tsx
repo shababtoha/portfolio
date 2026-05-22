@@ -1,10 +1,11 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { User, Briefcase, Award, Trophy } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { Briefcase, Award, Trophy, User, X, ZoomIn } from 'lucide-react';
 
 const About: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const stats = [
     { icon: Briefcase, label: 'Production Experience', value: '7+ Yrs' },
@@ -36,11 +37,23 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="glass rounded-2xl p-8 relative overflow-hidden">
+            <div className="glass rounded-2xl p-8 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10"></div>
               <div className="relative z-10">
-                <div className="w-full aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center">
-                  <User size={120} className="text-primary/50" />
+                <div
+                  className="w-full aspect-square rounded-xl overflow-hidden cursor-pointer relative"
+                  onClick={() => setIsImageModalOpen(true)}
+                >
+                  <img
+                    src="/shababtoha.jpg"
+                    alt="Shabab Hasnat Toha"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    style={{ imageRendering: '-webkit-optimize-contrast' }}
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                    <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={48} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -88,6 +101,44 @@ const About: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {isImageModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+            onClick={() => setIsImageModalOpen(false)}
+          >
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+              onClick={() => setIsImageModalOpen(false)}
+            >
+              <X size={24} className="text-white" />
+            </motion.button>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src="/shababtoha.jpg"
+                alt="Shabab Hasnat Toha - Full View"
+                className="w-full h-auto rounded-xl shadow-2xl"
+                style={{ imageRendering: '-webkit-optimize-contrast', maxHeight: '90vh', objectFit: 'contain' }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
