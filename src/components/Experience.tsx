@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Briefcase, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
@@ -40,7 +40,7 @@ const Experience: React.FC = () => {
     {
       company: 'Enosis Solutions',
       role: 'Software Engineer',
-      period: 'May 2018 - Jan 2022',
+      period: 'May 2019 - Jan 2022',
       location: 'Dhaka, Bangladesh',
       type: 'past',
       highlights: [
@@ -61,7 +61,7 @@ const Experience: React.FC = () => {
 
   const education = {
     degree: 'Bachelor of Science in Computer Science & Engineering',
-    university: 'University of Dhaka',
+    university: 'Military Institute of Science and Technology (MIST)',
     period: '2014 - 2018',
     location: 'Dhaka, Bangladesh',
     highlights: [

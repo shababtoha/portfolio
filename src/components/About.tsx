@@ -8,7 +8,7 @@ const About: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const stats = [
-    { icon: Briefcase, label: 'Production Experience', value: '7+ Yrs' },
+    { icon: Briefcase, label: 'Production Experience', value: '6+ Yrs' },
     { icon: Award, label: 'Events Processed Daily', value: '4B+' },
     { icon: Trophy, label: 'LeetCode Problems Solved', value: '500+' },
     { icon: User, label: 'Incident Response Faster', value: '-40%' },

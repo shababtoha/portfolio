@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const ref = useRef(null);
@@ -34,12 +34,6 @@ const Contact: React.FC = () => {
       href: 'mailto:shabab.toha@gmail.com',
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+66 083 830 9145',
-      href: 'tel:+660838309145',
-    },
-    {
       icon: MapPin,
       label: 'Location',
       value: 'Bangkok, Thailand',
@@ -48,8 +42,8 @@ const Contact: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/shababtoha', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/shababtoha/', label: 'LinkedIn' },
   ];
 
   return (
