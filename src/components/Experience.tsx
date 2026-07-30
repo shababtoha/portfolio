@@ -20,55 +20,62 @@ const Experience: React.FC = () => {
     {
       company: 'Agoda',
       role: 'Senior Software Engineer',
-      period: 'Feb 2022 - Present',
+      period: 'Jan 2023 - Present',
       location: 'Bangkok, Thailand',
       type: 'current',
       highlights: [
-        'Full ownership of internal analytics platform processing 4B+ events/day',
-        'Led real-time bug detection system reducing incident response time by 40%',
-        'Built analytics testing library adopted across 10+ services',
-        'Drove GDPR/PDPA compliance for sensitive data flows',
-        'Mentored 5+ engineers across backend and analytics domains',
+        'Own Agoda\'s global analytics platform processing around 4B events/day across 190+ countries',
+        'Designed real-time anomaly detection, reducing mean time to detect data-quality issues by about 60%',
+        'Built an analytics testing framework that cut production analytics bugs by 15%',
+        'Built an ETL pipeline for self-service engagement metrics from raw event data',
+        'Built real-time PII detection and masking with Legal and Compliance for GDPR/PDPA compliance',
       ],
       impact: [
-        'Platform serves all product teams globally for journey analytics',
-        'Maintained 99.9%+ uptime while scaling 3x event volume',
-        'Improved data accuracy by 20% through systematic validation',
-        'Reduced analytics defects by 15% through testing standards',
+        'Serves product, marketing, and data-science teams globally',
+        'Built monitoring and alerting dashboards to catch anomalies before customer impact',
+        'Standardized automated onboarding for teams adopting the analytics platform',
+        'Extended consistent event tracking across the WebView-native bridge',
+      ],
+    },
+    {
+      company: 'Enosis Solutions',
+      role: 'Senior Software Engineer',
+      period: 'Jan 2022 - Dec 2022',
+      location: 'Dhaka, Bangladesh',
+      type: 'past',
+      highlights: [
+        'Led a two-person team rebuilding a legacy Perl work-order system in .NET',
+        'Designed a .NET service architecture with clean separation of concerns',
+      ],
+      impact: [
+        'Met the delivery deadline with zero data loss',
+        'Reduced downtime after launch',
       ],
     },
     {
       company: 'Enosis Solutions',
       role: 'Software Engineer',
-      period: 'May 2019 - Jan 2022',
+      period: 'Mar 2019 - Dec 2021',
       location: 'Dhaka, Bangladesh',
       type: 'past',
       highlights: [
-        'Led enterprise system integrations for US-based clients (SAP, DELTEK, Oracle)',
-        'Built full-stack applications in .NET, Node.js, and React',
-        'Designed and implemented RESTful APIs serving 100K+ requests/day',
-        'Established CI/CD pipelines reducing deployment time from hours to minutes',
-        'Collaborated with offshore teams across multiple time zones',
+        'Integrated core products with Oracle, SAP, and DELTEK for enterprise data flow',
+        'Built a queuing system for data synchronization to replace a nightly batch job',
       ],
       impact: [
-        'Successfully delivered 8+ major client projects on time',
-        'Reduced client operational costs by automating manual workflows',
-        'Improved system performance by 50% through optimization',
-        'Earned fast-track promotion to senior developer role',
+        'Unblocked client onboardings waiting on enterprise integrations',
+        'Improved synchronization speed and reliability by about 50%',
       ],
     },
   ];
 
   const education = {
-    degree: 'Bachelor of Science in Computer Science & Engineering',
+    degree: 'B.Sc. Computer Science and Engineering',
     university: 'Military Institute of Science and Technology (MIST)',
-    period: '2014 - 2018',
+    period: 'Feb 2015 - Mar 2019',
     location: 'Dhaka, Bangladesh',
     highlights: [
-      'Strong foundation in algorithms, data structures, and computer architecture',
-      'Competed in ACM ICPC programming contests',
-      'Relevant coursework: Distributed Systems, Database Systems, Machine Learning',
-      'Active member of programming club and competitive programming community',
+      'Military Institute of Science and Technology (MIST), Dhaka',
     ],
   };
 
@@ -227,4 +234,3 @@ const Experience: React.FC = () => {
 };
 
 export default Experience;
-

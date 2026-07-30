@@ -18,14 +18,17 @@ const Navigation: React.FC = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Leadership', href: '#leadership' },
     { name: 'Competitive', href: '#competitive' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Resume', href: '/resume' },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/')) {
+      return;
+    }
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {

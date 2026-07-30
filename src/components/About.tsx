@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Briefcase, Award, Trophy, User, X, ZoomIn } from 'lucide-react';
+import { Briefcase, Award, Trophy, Code2, X, ZoomIn } from 'lucide-react';
 
 const About: React.FC = () => {
   const ref = useRef(null);
@@ -8,10 +8,10 @@ const About: React.FC = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const stats = [
-    { icon: Briefcase, label: 'Production Experience', value: '6+ Yrs' },
+    { icon: Briefcase, label: 'Production Experience', value: '5+ Yrs' },
     { icon: Award, label: 'Events Processed Daily', value: '4B+' },
-    { icon: Trophy, label: 'LeetCode Problems Solved', value: '500+' },
-    { icon: User, label: 'Incident Response Faster', value: '-40%' },
+    { icon: Trophy, label: 'LeetCode Global Rank', value: 'Top 9%' },
+    { icon: Code2, label: 'Codeforces Rating', value: 'Expert 1686' },
   ];
 
   return (
@@ -65,21 +65,18 @@ const About: React.FC = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h3 className="text-3xl font-bold mb-4 text-white">Data-Driven Engineer with Full Ownership Mindset</h3>
+            <h3 className="text-3xl font-bold mb-4 text-white">Full-Stack Software Engineer</h3>
             <p className="text-gray-400 mb-4 leading-relaxed">
-              <span className="text-white font-semibold">Full-stack ownership</span> of mission-critical analytics platforms at Agoda,
-              processing <span className="text-primary font-semibold">4B+ events daily</span>. I combine competitive programming
-              fundamentals with production systems expertise to deliver measurable business impact.
+              I own Agoda's global analytics platform, processing <span className="text-primary font-semibold">around 4B events daily</span>
+              for product, marketing, and data-science teams in 190+ countries.
             </p>
             <p className="text-gray-400 mb-4 leading-relaxed">
-              My engineering philosophy: <span className="text-white font-semibold">measure everything, optimize relentlessly</span>.
-              From distributed event pipelines to real-time monitoring systems, I build with observability-first approach and
-              data-backed decision making.
+              I build reliable, end-to-end software - from product-facing web experiences to backend services,
+              analytics platforms, and the systems that connect them.
             </p>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Led cross-team initiatives, mentored junior engineers, established testing standards, and drove GDPR/PDPA compliance
-              across data platforms. Strong background in competitive programming (ACM ICPC, online judges) translates to
-              efficient algorithm design and system optimization.
+              I have built anomaly detection, analytics testing, automated onboarding, and real-time PII detection and masking,
+              while collaborating with WebView, Legal, and Compliance teams.
             </p>
 
             {/* Stats */}

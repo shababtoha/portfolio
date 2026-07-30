@@ -1,15 +1,19 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
-import Leadership from './components/Leadership';
 import CompetitiveProgramming from './components/CompetitiveProgramming';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
+import Resume from './components/Resume';
 
 function App() {
+  if (window.location.pathname === '/resume' || window.location.pathname === '/resume/') {
+    return <Resume />;
+  }
+
   return (
     <div className="relative min-h-screen bg-dark overflow-hidden">
       <div className="fixed inset-0 z-0">
@@ -24,7 +28,6 @@ function App() {
           <Hero />
           <About />
           <Experience />
-          <Leadership />
           <CompetitiveProgramming />
           <Skills />
           <Projects />
@@ -38,11 +41,6 @@ function App() {
                 © 2026 Shabab Hasnat Toha. All rights reserved.
               </p>
               <div className="flex gap-6" role="navigation" aria-label="Social media links">
-                <a href="https://github.com/shababtoha" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-primary transition-colors"
-                   aria-label="Visit Shabab's GitHub profile">
-                  <Github size={20} />
-                </a>
                 <a href="https://linkedin.com/in/shababtoha" target="_blank" rel="noopener noreferrer"
                    className="text-gray-400 hover:text-primary transition-colors"
                    aria-label="Visit Shabab's LinkedIn profile">

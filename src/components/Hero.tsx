@@ -44,12 +44,10 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12"
           >
-            I build resilient, data-intensive systems powering product decisions at scale.
-            <span className="text-white font-semibold"> Full ownership </span>
-            of analytics infrastructure processing
-            <span className="text-primary font-semibold"> 4B+ events/day</span>.
+            Full-stack software engineer with <span className="text-white font-semibold">5+ years of experience</span> building reliable products and services.
+            I own analytics infrastructure processing <span className="text-primary font-semibold">around 4B events/day</span> across 190+ countries.
             <br className="hidden md:block" />
-            Competitive programmer turned platform engineer with proven impact at Agoda.
+            I design systems close to the data and make sure what ships is fast, reliable, and compliant.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -60,10 +58,10 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a
-              href="#projects"
+              href="/resume"
               className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
             >
-              View Impact & Results
+              View Resume
             </a>
             <a
               href="#contact"

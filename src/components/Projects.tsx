@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
       title: 'Real-Time Bug Detection and Alerting',
       description: [
         'Designed an event-driven anomaly detection system for post-production analytics bugs.',
-        'Added real-time alerting + dashboards that helped reduce critical incident response time by 40%.',
+        'Added real-time alerting and dashboards to surface anomalies before they affect customers.',
       ],
       tags: ['Event-Driven', 'Monitoring', 'Dashboards'],
       icon: Workflow,
