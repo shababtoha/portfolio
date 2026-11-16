@@ -1,97 +1,82 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, Code2, Sparkles } from 'lucide-react';
+import { heroStats, profile, summary } from '../content';
 
-const Hero: React.FC = () => {
+const portraitClass = 'rounded-md object-cover object-[center_18%]';
+
+export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8"
-          >
-            <Sparkles size={16} className="text-primary" />
-            <span className="text-sm text-gray-300">Senior Software Engineer at Agoda</span>
-          </motion.div>
+    <section id="top" className="border-b border-line">
+      <div className="mx-auto max-w-page px-5 py-14 sm:px-8 sm:py-20">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start lg:gap-12">
+          <div>
+            <div className="flex items-start justify-between gap-5">
+              <p className="pt-1 font-mono text-[0.7rem] font-medium uppercase tracking-[0.18em] text-accent">
+                Agoda · Bangkok · 6+ years
+              </p>
+              <img
+                src="/portrait.jpg"
+                alt="Shabab Hasnat Toha"
+                width={880}
+                height={1160}
+                className={`${portraitClass} h-28 w-[5.6rem] shrink-0 sm:h-36 sm:w-28 lg:hidden`}
+              />
+            </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
-          >
-            <span className="text-white">Hi, I'm </span>
-            <span className="text-gradient glow-text">Shabab Hasnat Toha</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center justify-center gap-3 mb-8"
-          >
-            <Code2 className="text-primary" size={28} />
-            <h2 className="text-2xl md:text-4xl text-gray-300 font-light">
-              Senior Software Engineer
+            <h1 className="mt-6 text-balance font-serif text-5xl leading-[0.95] text-ink sm:text-7xl">
+              {profile.name}
+            </h1>
+            <h2 className="mt-5 max-w-2xl text-pretty text-xl leading-snug text-ink sm:text-2xl">
+              <span className="font-semibold">Senior Backend Engineer</span>
+              <span className="text-muted"> | </span>
+              Distributed Systems
+              <span className="text-muted"> | </span>
+              Event-Driven & Real-Time Data Pipelines
             </h2>
-          </motion.div>
+            <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-muted">{summary}</p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12"
-          >
-            Full-stack software engineer with <span className="text-white font-semibold">5+ years of experience</span> building reliable products and services.
-            I own analytics infrastructure processing <span className="text-primary font-semibold">around 4B events/day</span> across 190+ countries.
-            <br className="hidden md:block" />
-            I design systems close to the data and make sure what ships is fast, reliable, and compliant.
-          </motion.p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <a href={`mailto:${profile.email}`} className="btn btn-primary text-center">
+                Email {profile.email}
+              </a>
+              <a href={profile.resumePath} download={profile.resumeFileName} className="btn btn-secondary">
+                Download resume
+              </a>
+              <a
+                href={profile.linkedin}
+                className="text-link px-1 py-2 font-semibold"
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={profile.github}
+                className="text-link px-1 py-2 font-semibold"
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <a
-              href="/resume"
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
-            >
-              View Resume
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 glass rounded-lg text-white font-semibold hover:bg-white/10 transition-all duration-300 hover:scale-105"
-            >
-              Let's Connect
-            </a>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-primary"
-            >
-              <ArrowDown size={24} />
-            </motion.div>
-          </motion.div>
+          <img
+            src="/portrait.jpg"
+            alt=""
+            width={880}
+            height={1160}
+            className={`${portraitClass} mt-2 hidden aspect-[4/5] w-full lg:block`}
+          />
         </div>
+
+        <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line pt-8 sm:grid-cols-4">
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="flex flex-col-reverse gap-2">
+              <dt className="max-w-[12rem] text-sm leading-snug text-muted">{stat.label}</dt>
+              <dd className="font-serif text-4xl leading-none text-ink sm:text-5xl">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
-};
-
-export default Hero;
-
-
+}

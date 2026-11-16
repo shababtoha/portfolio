@@ -2,71 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      html { background: #f7f6f3; }
+      html.dark { background: #0f1113; }
+    </style>
 
-    <!-- SEO Meta Tags -->
-    <title>Shabab Hasnat Toha - Senior Software Engineer | Full-Stack Developer | FAANG Ready</title>
-    <meta name="description" content="Shabab Hasnat Toha - Senior Software Engineer at Agoda with 4+ years experience. Expert in TypeScript, Node.js, .NET, Python, Kafka. 500+ LeetCode problems solved. ACM ICPC competitor. Available for FAANG and high-growth tech companies." />
-    <meta name="keywords" content="software engineer, full-stack developer, senior software engineer, TypeScript developer, Node.js engineer, .NET developer, Python developer, Kafka expert, Redis expert, backend engineer, frontend developer, competitive programmer, LeetCode expert, ACM ICPC, Agoda engineer, Bangkok software engineer, FAANG candidate, tech leadership, data engineer, analytics platform, scalable systems, microservices, system design, algorithm expert, Shabab Hasnat Toha, software engineering portfolio" />
+    <title>Shabab Hasnat Toha — Senior Backend Engineer</title>
+    <meta name="description" content="Senior backend engineer in Bangkok with 6+ years building high-throughput distributed systems. Owns Agoda’s analytics platform processing ~4 billion events a day — Kafka pipelines, real-time anomaly detection, alerting, and GDPR/PDPA compliance." />
     <meta name="author" content="Shabab Hasnat Toha" />
     <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="rating" content="general" />
-
-    <!-- Open Graph / Facebook Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://shababtoha.com/" />
-    <meta property="og:title" content="Shabab Hasnat Toha - Senior Software Engineer | Full-Stack Developer" />
-    <meta property="og:description" content="Senior Software Engineer at Agoda with 4+ years experience. Expert in TypeScript, Node.js, .NET, Python, Kafka. 500+ LeetCode problems solved. Available for top tech companies." />
-    <meta property="og:image" content="https://shababtoha.com/og-image.jpg" />
-    <meta property="og:site_name" content="Shabab Hasnat Toha Portfolio" />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://shababtoha.com/" />
-    <meta name="twitter:title" content="Shabab Hasnat Toha - Senior Software Engineer" />
-    <meta name="twitter:description" content="Senior Software Engineer at Agoda. Expert in full-stack development, system design, and competitive programming. 500+ LeetCode problems solved." />
-    <meta name="twitter:image" content="https://shababtoha.com/twitter-image.jpg" />
-
-    <!-- LinkedIn Meta Tags -->
-    <meta property="profile:first_name" content="Shabab Hasnat" />
-    <meta property="profile:last_name" content="Toha" />
-    <meta property="profile:username" content="shababtoha" />
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://shababtoha.com/" />
 
-    <!-- Geo Location -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shababtoha.com/" />
+    <meta property="og:title" content="Shabab Hasnat Toha — Senior Backend Engineer" />
+    <meta property="og:description" content="Distributed systems and real-time data pipelines. Owns Agoda’s analytics platform processing ~4 billion events a day." />
+    <meta property="og:image" content="https://shababtoha.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shabab Hasnat Toha, senior backend engineer. Distributed systems, event-driven architecture, and real-time data pipelines. About 4 billion events a day at Agoda in Bangkok." />
+    <meta property="og:site_name" content="Shabab Hasnat Toha" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shabab Hasnat Toha — Senior Backend Engineer" />
+    <meta name="twitter:description" content="Distributed systems and real-time data pipelines. ~4 billion events a day at Agoda." />
+    <meta name="twitter:image" content="https://shababtoha.com/og.png" />
+    <meta name="twitter:image:alt" content="Shabab Hasnat Toha, senior backend engineer for distributed systems and real-time data pipelines." />
+
+    <meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)" />
     <meta name="geo.region" content="TH-10" />
     <meta name="geo.placename" content="Bangkok" />
-    <meta name="geo.position" content="13.7563;100.5018" />
-    <meta name="ICBM" content="13.7563, 100.5018" />
 
-    <!-- Contact Information -->
-    <meta name="contact" content="shabab.toha@gmail.com" />
-    <meta name="reply-to" content="shabab.toha@gmail.com" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD Structured Data for Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Shabab Hasnat Toha",
-      "givenName": "Shabab Hasnat",
-      "familyName": "Toha",
       "url": "https://shababtoha.com",
       "email": "shabab.toha@gmail.com",
-      "telephone": "+66-083-830-9145",
+      "telephone": "+66-83-830-9145",
       "jobTitle": "Senior Software Engineer",
+      "description": "Senior backend engineer focused on distributed systems and event-driven, real-time data pipelines. Owns Agoda's analytics platform processing about 4 billion events a day.",
       "worksFor": {
         "@type": "Organization",
         "name": "Agoda"
@@ -76,37 +75,28 @@
         "addressLocality": "Bangkok",
         "addressCountry": "Thailand"
       },
-      "alumniOf": [
-        {
-          "@type": "EducationalOrganization",
-          "name": "Shahjalal University of Science and Technology"
-        }
-      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Military Institute of Science and Technology"
+      },
       "knowsAbout": [
-        "Software Engineering",
-        "Full-Stack Development",
-        "TypeScript",
+        "Distributed Systems",
+        "Event-Driven Architecture",
+        "Real-Time Data Pipelines",
+        "Apache Kafka",
+        "Java",
+        "Spring Boot",
         "Node.js",
+        "TypeScript",
         ".NET",
-        "Python",
-        "Kafka",
-        "Redis",
-        "Microservices",
         "System Design",
-        "Data Engineering",
-        "Competitive Programming",
-        "Algorithm Design",
-        "Backend Development",
-        "Frontend Development",
-        "Cloud Computing",
-        "DevOps"
+        "Backend APIs"
       ],
       "sameAs": [
         "https://github.com/shababtoha",
-        "https://linkedin.com/in/shababtoha",
-        "https://leetcode.com/shababtoha"
-      ],
-      "description": "Senior Software Engineer with 4+ years of experience at Agoda and Enosis Solutions. Expert in building scalable systems processing 4B+ events daily. Strong competitive programming background with 500+ LeetCode problems solved and ACM ICPC participation. Proven track record in technical leadership, mentoring engineers, and delivering measurable business impact."
+        "https://www.linkedin.com/in/shababtoha",
+        "https://codeforces.com/profile/_Lucifer"
+      ]
     }
     </script>
   </head>
@@ -115,4 +105,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
