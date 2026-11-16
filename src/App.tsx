@@ -1,63 +1,57 @@
-import { Linkedin, Mail } from 'lucide-react';
-import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import CompetitiveProgramming from './components/CompetitiveProgramming';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
+import { useEffect } from 'react';
+import Background from './components/Background';
 import Contact from './components/Contact';
+import Experience from './components/Experience';
+import Hero from './components/Hero';
+import Highlights from './components/Highlights';
 import Navigation from './components/Navigation';
 import Resume from './components/Resume';
+import Skills from './components/Skills';
+import { profile } from './content';
 
-function App() {
-  if (window.location.pathname === '/resume' || window.location.pathname === '/resume/') {
-    return <Resume />;
-  }
-
+function Footer() {
   return (
-    <div className="relative min-h-screen bg-dark overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-lighter to-dark"></div>
-        <div className="absolute top-0 -left-4 w-64 h-64 bg-primary/15 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"></div>
-        <div className="absolute top-0 -right-4 w-64 h-64 bg-secondary/15 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+    <footer className="border-t border-line" role="contentinfo">
+      <div className="mx-auto flex max-w-page flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <p>© {new Date().getFullYear()} {profile.name}</p>
+        <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-2 font-semibold">
+          <a className="hover:text-ink" href={`mailto:${profile.email}`}>Email</a>
+          <a className="hover:text-ink" href={profile.phoneHref}>{profile.phoneDisplay}</a>
+          <a className="hover:text-ink" href={profile.linkedin} target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+          <a className="hover:text-ink" href={profile.github} target="_blank" rel="me noopener noreferrer">GitHub</a>
+          <a className="hover:text-ink" href={profile.resumePath} download={profile.resumeFileName}>Resume</a>
+        </nav>
       </div>
-
-      <div className="relative z-10">
-        <Navigation />
-        <main role="main">
-          <Hero />
-          <About />
-          <Experience />
-          <CompetitiveProgramming />
-          <Skills />
-          <Projects />
-          <Contact />
-        </main>
-
-        <footer className="border-t border-white/10 py-8" role="contentinfo">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © 2026 Shabab Hasnat Toha. All rights reserved.
-              </p>
-              <div className="flex gap-6" role="navigation" aria-label="Social media links">
-                <a href="https://linkedin.com/in/shababtoha" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-primary transition-colors"
-                   aria-label="Visit Shabab's LinkedIn profile">
-                  <Linkedin size={20} />
-                </a>
-                <a href="mailto:shabab.toha@gmail.com"
-                   className="text-gray-400 hover:text-primary transition-colors"
-                   aria-label="Send email to Shabab">
-                  <Mail size={20} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </div>
+    </footer>
   );
 }
 
-export default App;
+export default function App() {
+  const isResume = window.location.pathname === '/resume' || window.location.pathname === '/resume/';
+
+  useEffect(() => {
+    if (!isResume) {
+      document.title = 'Shabab Hasnat Toha — Senior Backend Engineer';
+    }
+  }, [isResume]);
+
+  if (isResume) return <Resume />;
+
+  return (
+    <div className="min-h-screen bg-canvas text-ink">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <Navigation />
+      <main id="main">
+        <Hero />
+        <Highlights />
+        <Experience />
+        <Skills />
+        <Background />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}

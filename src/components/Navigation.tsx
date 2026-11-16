@@ -1,119 +1,117 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { navItems, profile } from '../content';
+import ThemeToggle from './ThemeToggle';
 
-const Navigation: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: '-20% 0px -55% 0px', threshold: [0.1, 0.25, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Competitive', href: '#competitive' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Resume', href: '/resume' },
-  ];
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/')) {
-      return;
-    }
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const close = () => setOpen(false);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            onClick={(e) => scrollToSection(e, '#home')}
-            className="text-2xl font-bold text-gradient"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {'Shabab Toha'}
-          </motion.a>
+    <header className="sticky top-0 z-40 border-b border-line bg-canvas">
+      <div className="h-1 bg-accent" aria-hidden="true" />
+      <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-5 sm:px-8">
+        <a href="#top" className="font-serif text-2xl leading-none text-ink" onClick={close}>
+          {profile.shortName}
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-gray-300 hover:text-primary transition-colors font-medium"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-              >
-                {item.name}
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-primary transition-colors"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden glass"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+          {navItems.filter((item) => item.href !== '#contact').map((item) => {
+            const id = item.href.slice(1);
+            const isActive = active === id;
+            return (
               <a
-                key={item.name}
+                key={item.href}
                 href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-white/5 rounded-lg transition-all"
+                aria-current={isActive ? 'true' : undefined}
+                className={`border-b-2 pb-0.5 text-sm font-semibold ${
+                  isActive
+                    ? 'border-accent text-ink'
+                    : 'border-transparent text-muted hover:text-ink'
+                }`}
               >
                 {item.name}
               </a>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </motion.nav>
+            );
+          })}
+          <a href="/resume" className="text-sm font-semibold text-muted hover:text-ink">
+            Resume
+          </a>
+        </nav>
+
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <a href="#contact" className="btn btn-primary hidden sm:inline-flex">
+            Contact
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </div>
+
+      {open ? (
+        <nav
+          id="mobile-nav"
+          className="fixed inset-x-0 bottom-0 top-[4.25rem] z-30 overflow-y-auto bg-canvas px-5 py-4 lg:hidden"
+          aria-label="Mobile"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={close}
+              className="block border-b border-line py-4 text-lg font-semibold text-ink"
+            >
+              {item.name}
+            </a>
+          ))}
+          <a href="/resume" onClick={close} className="block border-b border-line py-4 text-lg font-semibold text-ink">
+            Resume
+          </a>
+        </nav>
+      ) : null}
+    </header>
   );
-};
-
-export default Navigation;
-
-
+}
